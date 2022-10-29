@@ -5,6 +5,10 @@ headerMenu.onclick = () => {
   document.querySelector("header nav").classList.toggle("open-menu");
   document.querySelector("section").classList.toggle("no-touch");
   document.querySelector("footer").classList.toggle("no-touch");
+
+
+  document.body.classList.toggle('body-overflow-hidden');
+  
 };
 
 
@@ -76,32 +80,27 @@ let parentMenuNewCoin = document.getElementById("menu-new-coin");
 document.getElementById("add-coin").onclick = () => {
   parentMenuNewCoin.classList.add("active");
 
-  if(parentMenuNewCoin.classList.contains("active")){
-    document.body.style.overflow = 'hidden'
-  }
+  // إيقاف سكرول الصفحة لتشغيل سكرول العنصر
+  document.body.classList.add('body-overflow-hidden');
 
 };
 
 document.getElementById("close-menu").onclick = () => {
   parentMenuNewCoin.classList.remove("active");
-
-  if(!parentMenuNewCoin.classList.contains("active")){
-    document.body.style.overflow = 'auto'
-  }
+  // إعادة تشغيل سكرول الصفحة
+  document.body.classList.remove('body-overflow-hidden');
 
 };
 
 document.getElementById("save-coin").onclick = () =>{
-
-  if(parentMenuNewCoin.classList.contains("active")){
-    document.body.style.overflow = 'auto'
-  }
-
   let inputs = Array.from(document.querySelectorAll("coin-option, input"));
   // the in array there are element checked=true
   let checkedInput = inputs.filter(i => i.checked);
   parentMenuNewCoin.classList.remove("active");
   toLandingPage(checkedInput);
+
+  // إعادة تشغيل سكرول الصفحة
+  document.body.classList.remove('body-overflow-hidden');
 };
 
 function toLandingPage(elementsChecked) {
