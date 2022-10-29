@@ -1,0 +1,514 @@
+/* ============ Start the sittengs ============ */
+
+:root {
+  --main-color: #14181e;
+  --secondary-color: #7ca76f;
+  --font-color: #f4f4f4;
+  --background-body-color: #e3e3e3;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--background-body-color);
+  font-family: "Cairo", sans-serif;
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  max-width: 100%;
+}
+
+ul {
+  list-style: none;
+}
+
+.no-touch {
+  pointer-events: none;
+  user-select: none;
+}
+
+input[type="number"]::-webkit-inner-spin-button {
+  display: none;
+}
+
+.container {
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Small */
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+
+/* Medium */
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+
+/* Large */
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
+/* ============ End the sittengs ============ */
+
+header {
+  background-color: var(--main-color);
+  color: var(--font-color);
+}
+
+header .container {
+  height: 44px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h1 {
+  user-select: none;
+  cursor: pointer;
+}
+
+header h1 span {
+  color: var(--secondary-color);
+}
+
+/* ============Start Style Icon menu ============ */
+header .bars {
+  width: 29px;
+  height: 20px;
+  padding: 7px;
+  position: relative;
+  cursor: pointer;
+}
+
+header .bars span {
+  background-color: white;
+  width: 100%;
+  height: 3px;
+  position: absolute;
+  right: 0;
+  top: 3;
+  transition: transform, top, 0.3s linear;
+  border-radius: 20px;
+}
+
+header .bars span:first-child {
+  top: 0;
+}
+header .bars span:nth-child(2) {
+  top: 48%;
+}
+header .bars span:nth-child(3) {
+  top: 100%;
+}
+
+header .bars.active span:nth-child(2) {
+  opacity: 0;
+}
+
+header .bars.active span {
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--secondary-color);
+}
+
+header .bars.active span:first-child {
+  transform: rotate(45deg);
+}
+
+header .bars.active span:last-child {
+  transform: rotate(-45deg);
+}
+/* ============End Style Icon menu ============ */
+/* ============Start nav bar ============ */
+header nav {
+  position: fixed;
+  top: 44px;
+  right: 0;
+  display: block;
+  width: 50%;
+  height: calc(100% - 44px);
+  background-color: var(--main-color);
+  transform: translateX(100%);
+  transition: transform 0.3s linear;
+  z-index: 99;
+}
+
+nav.open-menu {
+  transform: translateX(0);
+  box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.349);
+}
+
+@media (max-width: 600px) {
+  header nav {
+    width: 65vw;
+  }
+}
+@media (min-width: 750px) {
+  header nav {
+    width: 40vw;
+  }
+}
+@media (min-width: 1200px) {
+  header nav {
+    width: 20vw;
+  }
+}
+
+header nav::after {
+  content: "img";
+  color: black;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 180px;
+  background-color: white;
+}
+
+header nav ul {
+  margin-top: 200px;
+  display: flex;
+  flex-direction: column;
+  padding: 0 20px;
+}
+
+header nav ul li {
+  text-align: end;
+  cursor: pointer;
+  width: 100%;
+  display: block;
+  padding: 10px 5px;
+  margin: 5px 0;
+  transition: background-color 0.2s linear;
+}
+
+header nav ul li i {
+  color: var(--secondary-color);
+  margin-left: 10px;
+}
+
+header nav ul li:hover {
+  background-color: #292d32;
+}
+/* ============End nav bar ============ */
+
+/*  ============ Start the section ============  */
+section {
+  direction: rtl;
+  margin-top: 40px;
+}
+
+section .update-time span:first-child {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 4px solid var(--secondary-color);
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border-left-color: #efefef;
+  border-bottom-color: #efefef;
+  font-size: 15px;
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+section .update-time span:last-child {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+section .box {
+  border: 2px solid #b1b1b1;
+  border-radius: 6px;
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 64px;
+  background-color: white;
+  cursor: pointer;
+}
+section .box.active {
+  border-color: var(--secondary-color);
+}
+
+section .box:focus {
+  border-color: var(--secondary-color);
+}
+
+.box .info {
+  margin-right: 10px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.box .info img {
+  clip-path: circle(40%);
+  width: 34px;
+}
+
+.box .info p {
+  text-align: center;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.box .control {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  position: relative;
+  margin-left: 20px;
+}
+
+.box .control input {
+  direction: ltr;
+  width: 40%;
+  font-size: 20px;
+  outline: none;
+  border: none;
+  text-align: start;
+  margin-left: 20px;
+  font-weight: 600;
+  caret-color: var(--secondary-color);
+}
+
+.box .control::before {
+  content: "$";
+  font-family: Arial, Helvetica, sans-serif;
+  position: absolute;
+  top: -1px;
+  left: 5px;
+  font-size: 20px;
+}
+
+.box .control span {
+  font-size: 13px;
+}
+
+@media (min-width: 992px) {
+  .box .control {
+    flex-direction: row-reverse;
+    flex: 1;
+  }
+  .box .control span {
+    position: absolute;
+    right: 0;
+    font-size: 15px;
+    font-weight: 700;
+    top: -4px;
+  }
+}
+
+.box .analytics {
+  padding: 15px;
+  border-right: 1px solid #b1b1b1;
+  height: 100%;
+}
+
+.box .analytics.opacity-div {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.box .analytics i {
+  font-size: 20px;
+}
+
+section .add-coin {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+}
+
+section .add-coin span {
+  color: #585c67;
+}
+
+section .add-coin span i {
+  margin-left: 10px;
+}
+
+section .add-coin > button {
+  outline: 0;
+  border: 0;
+  padding: 10px 25px;
+  font-size: 18px;
+  border-radius: 10px;
+  background-color: #628b55;
+  color: #ddf1d6;
+  cursor: pointer;
+}
+
+/* --------------- Start the menu coin --------------- */
+.new-coin {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--main-color);
+  z-index: 1000;
+  display: none;
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .new-coin {
+    position: absolute;
+    width: 600px;
+    height: 500px;
+    border-radius: 10px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.349);
+  }
+}
+
+.new-coin.active {
+  display: block;
+}
+
+.new-coin .header-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 20px;
+  user-select: none;
+}
+
+.new-coin .header-section span {
+  font-weight: bold;
+  font-size: 19px;
+  color: var(--secondary-color);
+}
+
+.new-coin .header-section button {
+  outline: 0;
+  border: 0;
+  color: white;
+  background-color: transparent;
+  padding: 5px 10px;
+  font-size: 25px;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+
+.new-coin hr {
+  border: 0;
+  background-color: rgba(218, 218, 218, 0.479);
+  height: 1px;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.new-coin .content {
+  overflow-y: auto;
+  height: calc(100% - 65px);
+}
+
+.new-coin .content::-webkit-scrollbar {
+  width: 5px;
+}
+
+.new-coin .content::-webkit-scrollbar-thumb {
+  background-color: #313741;
+  border-radius: 25px;
+}
+
+.new-coin .content::-webkit-scrollbar-track {
+  background-color: #14181e;
+  border-radius: 25px;
+}
+
+.new-coin .coin-option {
+  display: flex;
+  align-items: center;
+  margin: 10px 20px;
+}
+
+.new-coin .coin-option label {
+  display: inline-flex;
+  align-items: center;
+  color: var(--font-color);
+  width: 100%;
+}
+
+.new-coin .coin-option label .info {
+  user-select: none;
+}
+
+.new-coin .coin-option label .info h4 {
+  font-size: 14px;
+  margin: 0;
+}
+
+.new-coin .coin-option label .info span {
+  font-size: 13px;
+  line-height: 19px;
+  display: block;
+}
+
+.new-coin .coin-option label img {
+  width: 40px;
+  height: 27px;
+  margin: 0 15px 0 20px;
+}
+/* --------------- End the menu coin --------------- */
+/* --------------- Start the footer --------------- */
+footer {
+  margin-bottom: 15px;
+}
+
+footer hr {
+  margin: 10px 0;
+}
+
+footer ul {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  gap: 20px;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  footer ul {
+    flex-direction: column;
+  }
+}
+
+footer ul li:first-child {
+  font-weight: bold;
+  font-size: 30px;
+  color: #628b55;
+}
